@@ -3,19 +3,19 @@ create database caixa_escola;
 use caixa_escola;
 
 create table funcionario(
-	pk int not null, primary key(pk),
+	pk int not null auto_increment, primary key(pk),
     nome varchar(255) not null,
     login varchar(255) not null
 );
 
 create table produto(
-	pk int not null, primary key(pk),
+	pk int not null auto_increment, primary key(pk),
     nome varchar(255) not null,
     valor int not null
 );
 
 create table venda(
-	pk int not null, primary key(pk),
+	pk int not null auto_increment, primary key(pk),
     produto varchar(255) not null,
     operador varchar(255) not null,
     data_venda date not null,
@@ -25,17 +25,25 @@ create table venda(
 );
 
 create table pix(
-	pk int not null, primary key(pk),
+	pk int not null auto_increment, primary key(pk),
     aluno_nome varchar(255) not null,
     aluno_turma varchar(255) not null,
     venda_fk int not null, foreign key(venda_fk) references venda(pk)
 );
 
 create table caixa(
-	pk int not null, primary key(pk),
+	pk int not null auto_increment, primary key(pk),
     fundo_troco int not null,
     sangria_troco int not null,
     reforso varchar(255) not null,
     nome varchar(255) not null,
     venda_fk int not null, foreign key(venda_fk) references venda(pk)
+);
+
+create table historico_venda(
+pk int not null auto_increment, primary key(pk),
+ data_venda date not null,
+ operador varchar(255) not null,
+ valor int not null,
+ venda_fk int not null, foreign key(venda_fk) references venda(pk)
 );
