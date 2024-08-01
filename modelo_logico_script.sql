@@ -1,3 +1,5 @@
+/*drop database caixa_escola;*/
+
 create database caixa_escola;
 
 use caixa_escola;
@@ -11,7 +13,7 @@ create table funcionario(
 create table produto(
 	pk int not null auto_increment, primary key(pk),
     nome varchar(255) not null,
-    valor decimal(2) not null
+    valor decimal(25) not null
 );
 
 create table venda(
@@ -43,3 +45,23 @@ create table historico_venda(
 	funcionario_fk int not null, foreign key(funcionario_fk) references funcionario(pk),
 	venda_fk int not null, foreign key(venda_fk) references venda(pk)
 );
+
+/*funcinario*/
+
+insert into funcionario (nome, login) value ("Norberto", "norbertomatadordeporco");
+insert into funcionario (nome, login) value ("Gisele", "giselesalgados");
+insert into funcionario (nome, login) value ("Sérgio", "tchuqui");
+insert into funcionario (nome, login) value ("Dinael", "pinduquinha123");
+insert into funcionario (nome, login) value ("Eleia", "geleinha123");
+
+select * from funcionario;
+
+/*produto*/
+
+insert into produto (nome, valor) value ("Perâ", '27,98');
+insert into produto (nome, valor) value ("Calabreso", '30,57');
+insert into produto (nome, valor) value ("Escova de Dente", '1,50');
+insert into produto (nome, valor) value ("Piruca", '20,99');
+insert into produto (nome, valor) value ("Ak-47", '1500,00');
+
+select * from produto;
